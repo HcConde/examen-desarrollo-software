@@ -1,16 +1,28 @@
 package examen_desarrollo_software.examen_desarrollo_software.entities;
 
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private Double price;
 
     @ManyToOne
-    @JoinColumn(name = "category_id") // Relación Foreign Key
+    @JoinColumn(name = "category_id") // Relación Foreign Key solicitada [cite: 10]
     private Category category;
-    // Agrega Getters y Setters
+
+    // Getters y Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public Double getPrice() { return price; }
+    public void setPrice(Double price) { this.price = price; }
+    public Category getCategory() { return category; }
+    public void setCategory(Category category) { this.category = category; }
 }
